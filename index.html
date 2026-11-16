@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f766e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="خطوة آمنة">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<title>SafeStep-JO | خطوة آمنة</title>
+<style>
+:root{--green:#287b65;--green2:#e6f2eb;--blue:#347ca4;--ink:#18352e;--muted:#64756f;--line:#dce7e1;--bg:#f5f8f6;--white:#fff;--red:#c83232}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Arial,Tahoma,sans-serif;line-height:1.65}button,input{font:inherit}button{cursor:pointer}.wrap{max-width:980px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px}.logo{background:var(--green2);border-radius:15px;padding:8px;font-size:26px}.btn,.tab,.choice{border:0;border-radius:12px;padding:11px 15px;font-weight:700}.btn{background:var(--green);color:white}.btn.light,.choice{background:#fff;border:1px solid var(--line);color:var(--ink)}.hero{background:linear-gradient(120deg,#e1f0e8,#e8f2f8);padding:25px;border-radius:22px;margin-bottom:16px}.hero h1{margin:0 0 6px;font-size:clamp(25px,5vw,38px)}.hero p{margin:0;color:#47635a}.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;background:#eaf0ec;padding:7px;border-radius:16px;margin-bottom:17px}.tab{background:transparent;color:#52665e;padding:10px 4px;font-size:14px}.tab.active{background:var(--green);color:white}.page{display:none}.page.active{display:block}.heading{margin:0 0 4px;font-size:23px}.sub{color:var(--muted);margin:0 0 15px;font-size:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tile{border:0;border-radius:17px;min-height:118px;padding:16px 10px;color:white;font-weight:800;font-size:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}.tile span:first-child{font-size:30px}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:16px;margin:12px 0}.question{font-weight:700;margin-bottom:10px}.choices{display:flex;gap:9px}.choice{flex:1}.choice.selected{background:var(--green);color:white;border-color:var(--green)}.full{width:100%;margin-top:12px}.progress{height:9px;background:#e9efeb;border-radius:20px;overflow:hidden;margin:12px 0}.progress>div{height:100%;background:#319b72;width:0}.muted{color:var(--muted);font-size:14px}.exercise{display:flex;gap:14px;align-items:flex-start}.emoji{font-size:38px}.field{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;margin:5px 0 12px;background:#fff;color:var(--ink)}.alertbox{border:2px solid #efb6b2}.call{display:block;text-align:center;background:var(--red);color:white;text-decoration:none;border-radius:16px;padding:19px;font-weight:900;font-size:24px;margin-top:12px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}.pill{display:inline-block;background:var(--green2);color:#205d49;border-radius:99px;padding:4px 10px;font-size:12px;font-weight:700}.toast{min-height:24px;color:var(--green);font-weight:700;font-size:14px;margin-top:8px}
+@media(min-width:700px){.grid{grid-template-columns:repeat(3,1fr)}.hero{padding:34px}.wrap{padding:28px}.nav{max-width:650px}.panel{padding:20px}}
+@media(max-width:420px){.tab{font-size:12px}.wrap{padding:12px}.hero{padding:19px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+ <div class="brand"><span class="logo">🏡</span><span>SafeStep-JO<br><small style="font-size:12px;color:#64756f;font-weight:500">خطوة آمنة · A safer life</small></span></div>
+ <button class="btn light" id="language" onclick="toggleLanguage()">English</button>
+</header>
+<section class="hero">
+ <span class="pill" id="tagline">مشروع توعوي للوقاية من السقوط</span>
+ <h1 id="welcome">مرحباً بك في SafeStep-JO</h1>
+ <p id="intro">معاً لخطوات أكثر أماناً واستقلالية لكبار السن في الأردن.</p>
+</section>
+<nav class="nav">
+ <button class="tab active" data-page="home" onclick="showPage('home')">🏠 <span data-ar="الرئيسية" data-en="Home">الرئيسية</span></button>
+ <button class="tab" data-page="check" onclick="showPage('check')">✓ <span data-ar="الفحص اليومي" data-en="Daily check">الفحص اليومي</span></button>
+ <button class="tab" data-page="exercise" onclick="showPage('exercise')">🧍 <span data-ar="التمارين" data-en="Exercises">التمارين</span></button>
+ <button class="tab" data-page="emergency" onclick="showPage('emergency')">🚨 <span data-ar="الطوارئ" data-en="Emergency">الطوارئ</span></button>
+</nav>
+<main>
+<section class="page active" id="home">
+ <h2 class="heading" data-ar="الخدمات الرئيسية" data-en="Main services">الخدمات الرئيسية</h2><p class="sub" data-ar="اختر القسم الذي ترغب في استكشافه." data-en="Choose a section to explore.">اختر القسم الذي ترغب في استكشافه.</p>
+ <div class="grid">
+  <button class="tile" style="background:#39876c" onclick="showPage('risk')">🩺 <span data-ar="تقييم خطر السقوط" data-en="Fall-risk check">تقييم خطر السقوط</span></button>
+  <button class="tile" style="background:#347ca4" onclick="showPage('audit')">🏠 <span data-ar="سلامة المنزل" data-en="Home safety">سلامة المنزل</span></button>
+  <button class="tile" style="background:#319d92" onclick="showPage('exercise')">🧍 <span data-ar="تمارين التوازن" data-en="Balance exercises">تمارين التوازن</span></button>
+  <button class="tile" style="background:#d28c39" onclick="showPage('med')">💊 <span data-ar="سجل الأدوية" data-en="Medication log">سجل الأدوية</span></button>
+  <button class="tile" style="background:#537db0" onclick="showPage('care')">👨‍👩‍👧 <span data-ar="تثقيف مقدمي الرعاية" data-en="Caregiver education">تثقيف مقدمي الرعاية</span></button>
+  <button class="tile" style="background:#649a55" onclick="showPage('report')">📋 <span data-ar="التقرير التمريضي" data-en="Nursing report">التقرير التمريضي</span></button>
+ </div>
+ <div class="panel"><b data-ar="تذكير اليوم" data-en="Daily reminder">تذكير اليوم</b><p class="muted" data-ar="تحرك ببطء، واستخدم وسيلة المساعدة عند الحاجة، وحافظ على إضاءة الممرات." data-en="Move slowly, use your walking aid when needed, and keep walkways well lit.">تحرك ببطء، واستخدم وسيلة المساعدة عند الحاجة، وحافظ على إضاءة الممرات.</p></div>
+</section>
+<section class="page" id="check"><h2 class="heading" data-ar="القائمة اليومية" data-en="Daily checklist">القائمة اليومية</h2><p class="sub" data-ar="أجب عن الأسئلة لتسجيل عادات السلامة اليومية." data-en="Answer the questions to record daily safety habits.">أجب عن الأسئلة لتسجيل عادات السلامة اليومية.</p><div class="muted" id="count">0 / 6</div><div class="progress"><div id="bar"></div></div><div id="questions"></div><button class="btn full" onclick="saveCheck()" data-ar="حفظ فحص اليوم" data-en="Save today's check">حفظ فحص اليوم</button><div class="toast" id="checkmsg"></div></section>
+<section class="page" id="exercise"><h2 class="heading" data-ar="تمارين التوازن والقوة" data-en="Balance & strength exercises">تمارين التوازن والقوة</h2><p class="sub" data-ar="مارس التمارين قرب كرسي ثابت، ويفضل بإشراف مختص." data-en="Exercise beside a stable chair, preferably with professional supervision.">مارس التمارين قرب كرسي ثابت، ويفضل بإشراف مختص.</p><div id="exercises"></div><div class="panel muted" data-ar="تنبيه: توقف فوراً عند الشعور بالدوار أو الألم أو ضيق التنفس. استشر مختصاً قبل بدء برنامج رياضي جديد." data-en="Safety: Stop immediately if you feel dizzy, pain, or shortness of breath. Consult a professional before starting a new exercise program.">تنبيه: توقف فوراً عند الشعور بالدوار أو الألم أو ضيق التنفس.</div></section>
+<section class="page" id="emergency"><div class="panel alertbox"><div style="text-align:center;font-size:35px">🚨</div><h2 class="heading" style="text-align:center;color:#b52c2c" data-ar="تنبيه الحالات الطارئة" data-en="Red-flag alert">تنبيه الحالات الطارئة</h2><p class="muted" style="text-align:center" data-ar="في حالات الطوارئ اتصل برقم الطوارئ الموحد في الأردن." data-en="In an emergency, call Jordan's unified emergency number.">في حالات الطوارئ اتصل برقم الطوارئ الموحد في الأردن.</p><a class="call" href="tel:911">☎ <span data-ar="اتصل 911 الآن" data-en="CALL 911 NOW">اتصل 911 الآن</span></a></div><div id="redflags"></div></section>
+<section class="page" id="risk"><h2 class="heading" data-ar="تقييم أولي لخطر السقوط" data-en="Initial fall-risk check">تقييم أولي لخطر السقوط</h2><p class="sub" data-ar="هذا الفحص توعوي ولا يمثل تشخيصاً طبياً." data-en="This screening is educational and is not a medical diagnosis.">هذا الفحص توعوي ولا يمثل تشخيصاً طبياً.</p><div id="riskqs"></div><button class="btn full" onclick="riskResult()" data-ar="عرض الملخص" data-en="View summary">عرض الملخص</button><div class="toast" id="riskmsg"></div></section>
+<section class="page" id="audit"><h2 class="heading" data-ar="فحص سلامة المنزل" data-en="Home-safety audit">فحص سلامة المنزل</h2><div id="auditqs"></div><button class="btn full" onclick="auditResult()" data-ar="حفظ الفحص" data-en="Save audit">حفظ الفحص</button><div class="toast" id="auditmsg"></div></section>
+<section class="page" id="med"><h2 class="heading" data-ar="سجل الأدوية" data-en="Medication log">سجل الأدوية</h2><div class="panel"><label data-ar="اسم الدواء" data-en="Medicine name">اسم الدواء</label><input id="medname" class="field" placeholder="اسم الدواء / Medicine name"><label data-ar="موعد التناول" data-en="Dose time">موعد التناول</label><input id="medtime" class="field" type="time"><button class="btn full" onclick="addMed()" data-ar="إضافة الدواء" data-en="Add medicine">إضافة الدواء</button><div class="toast" id="medmsg"></div></div><div class="panel"><b data-ar="الأدوية المسجلة" data-en="Saved medicines">الأدوية المسجلة</b><div id="medlist" class="muted">لا توجد أدوية مسجلة بعد.</div></div><p class="muted" data-ar="هذا السجل للتذكير فقط؛ لا تغيّر جرعات الأدوية دون استشارة الطبيب أو الصيدلي." data-en="This log is for reminders only. Do not change medication doses without consulting a clinician or pharmacist.">هذا السجل للتذكير فقط.</p></section>
+<section class="page" id="care"><h2 class="heading" data-ar="تثقيف مقدمي الرعاية" data-en="Caregiver education">تثقيف مقدمي الرعاية</h2><div id="careitems"></div></section>
+<section class="page" id="report"><h2 class="heading" data-ar="ملخص التقرير التمريضي" data-en="Nursing summary">ملخص التقرير التمريضي</h2><div class="panel" id="reportdata"></div><button class="btn full" onclick="window.print()" data-ar="طباعة التقرير" data-en="Print report">طباعة التقرير</button><p class="muted" data-ar="البيانات المعروضة تجريبية ومحفوظة في جلسة المتصفح الحالية فقط." data-en="Displayed data are for demonstration and remain only in this browser session.">البيانات المعروضة تجريبية.</p></section>
+</main>
+<footer class="footer">SafeStep-JO · <span data-ar="نموذج أولي توعوي" data-en="Educational prototype">نموذج أولي توعوي</span></footer>
+</div>
+<script>
+let lang='ar',answers={},riskAnswers={},auditAnswers={},meds=[],completed=[];
+// حفظ بيانات النموذج محلياً على الجهاز لتبقى بعد إغلاق الصفحة.
+try {
+ const saved = JSON.parse(localStorage.getItem('safestep-data') || '{}');
+ answers=saved.answers||{}; riskAnswers=saved.riskAnswers||{}; auditAnswers=saved.auditAnswers||{};
+ meds=saved.meds||[]; completed=saved.completed||[];
+} catch(e) { console.warn('تعذر تحميل البيانات المحفوظة', e); }
+function persistData(){
+ try { localStorage.setItem('safestep-data', JSON.stringify({answers,riskAnswers,auditAnswers,meds,completed})); }
+ catch(e) { console.warn('تعذر حفظ البيانات محلياً', e); }
+}
+const Q=[['هل ارتديت حذاءً مانعاً للانزلاق؟','Did you wear non-slip shoes?'],['هل الأرضيات جافة وخالية من العوائق؟','Are floors dry and free of obstacles?'],['هل استخدمت وسيلة المساعدة عند الحاجة؟','Did you use your walking aid when needed?'],['هل تناولت أدويتك حسب الوصفة؟','Did you take your medication as prescribed?'],['هل كانت الإضاءة كافية؟','Was lighting adequate?'],['هل شعرت بدوار أو عدم اتزان اليوم؟','Did you feel dizzy or unsteady today?']];
+const R=[['هل سقطت خلال الاثني عشر شهراً الماضية؟','Have you fallen in the past 12 months?'],['هل تشعر بعدم الاتزان عند المشي؟','Do you feel unsteady when walking?'],['هل تحتاج إلى مساعدة عند النهوض؟','Do you need help getting up?'],['هل تتناول أدوية قد تسبب الدوار؟','Do you take medicines that may cause dizziness?']];
+const A=[['هل توجد سجاد غير مثبتة؟','Are there unsecured rugs?'],['هل توجد مقابض دعم في الحمام؟','Are there grab bars in the bathroom?'],['هل الممرات خالية من الأسلاك والعوائق؟','Are walkways free of cords and obstacles?'],['هل الإضاءة جيدة ليلاً؟','Is lighting adequate at night?']];
+const E=[['🦵','رفع الركبة أثناء الجلوس','Seated knee lifts','اجلس على كرسي ثابت وارفع ركبة واحدة بلطف ثم بدّل.','Sit in a stable chair. Gently lift one knee, then alternate.'],['🪑','الجلوس والوقوف','Sit-to-stand','استخدم كرسياً ثابتاً وانهض ببطء مع الاستعانة بالذراعين عند الحاجة.','Use a stable chair and stand up slowly, using your arms if needed.'],['🦶','رفع الكعبين','Heel raises','قف خلف كرسي ثابت وارفع كعبيك ببطء.','Stand behind a stable chair and slowly raise your heels.']];
+const C=[['🏠','تأمين المنزل','Make the home safer','أزل العوائق وثبّت السجاد وحسّن الإضاءة.','Remove obstacles, secure rugs, and improve lighting.'],['👟','الأحذية المناسبة','Appropriate footwear','اختر أحذية مريحة مغلقة وذات نعل مانع للانزلاق.','Choose comfortable closed shoes with non-slip soles.'],['💊','مراجعة الأدوية','Medication review','راجع الأدوية مع الطبيب أو الصيدلي ولا تغيّر الجرعات بنفسك.','Review medicines with a clinician or pharmacist. Never change doses yourself.'],['🤝','الدعم والمرافقة','Support and supervision','قدّم المساعدة عند الحاجة واحترم استقلالية الشخص.','Offer help when needed and respect the person’s independence.']];
+const F=[['😵','دوار شديد أو إغماء','Severe dizziness or fainting','اجلس أو استلقِ في مكان آمن واطلب المساعدة.','Sit or lie somewhere safe and seek help.'],['🧍','السقوط الفعلي','Actual fall','لا تحاول النهوض إذا كنت مصاباً أو تشعر بألم شديد. اطلب المساعدة.','Do not get up if injured or in severe pain. Call for help.'],['🫁','ألم الصدر أو صعوبة التنفس','Chest pain or difficulty breathing','اتصل بالطوارئ فوراً ولا تقد السيارة بنفسك.','Call emergency services immediately. Do not drive yourself.']];
+const t=(a,e)=>lang==='ar'?a:e;
+function toggleLanguage(){lang=lang==='ar'?'en':'ar';document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.getElementById('language').textContent=t('English','العربية');document.querySelectorAll('[data-ar]').forEach(el=>el.textContent=t(el.dataset.ar,el.dataset.en));renderAll()}
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.page===id));if(id==='report')renderReport();window.scrollTo({top:0,behavior:'smooth'})}
+function questionHTML(arr,store,prefix){return arr.map((q,i)=>`<div class="panel"><div class="question">${i+1}. ${t(q[0],q[1])}</div><div class="choices"><button class="choice ${store[prefix+i]===true?'selected':''}" onclick="setAnswer('${prefix+i}',true,'${prefix}')">✓ ${t('نعم','Yes')}</button><button class="choice ${store[prefix+i]===false?'selected':''}" onclick="setAnswer('${prefix+i}',false,'${prefix}')">✕ ${t('لا','No')}</button></div></div>`).join('')}
+function setAnswer(k,v,p){let store=p==='d'?answers:p==='r'?riskAnswers:auditAnswers;store[k]=v;persistData();renderAll()}
+function renderAll(){
+ document.getElementById('questions').innerHTML=questionHTML(Q,answers,'d');let n=Object.keys(answers).length;document.getElementById('count').textContent=n+' / 6';document.getElementById('bar').style.width=(n/6*100)+'%';
+ document.getElementById('riskqs').innerHTML=questionHTML(R,riskAnswers,'r');document.getElementById('auditqs').innerHTML=questionHTML(A,auditAnswers,'a');
+ document.getElementById('exercises').innerHTML=E.map((x,i)=>`<div class="panel exercise"><span class="emoji">${x[0]}</span><div><b>${t(x[1],x[2])}</b><p class="muted">${t(x[3],x[4])}</p><button class="btn light" onclick="completeExercise(${i})">${completed.includes(i)?t('✓ مكتمل','✓ Completed'):t('ابدأ التمرين','Start exercise')}</button></div></div>`).join('');
+ document.getElementById('redflags').innerHTML=F.map(x=>`<div class="panel exercise"><span class="emoji">${x[0]}</span><div><b>${t(x[1],x[2])}</b><p class="muted">${t(x[3],x[4])}</p></div></div>`).join('');
+ document.getElementById('careitems').innerHTML=C.map(x=>`<div class="panel exercise"><span class="emoji">${x[0]}</span><div><b>${t(x[1],x[2])}</b><p class="muted">${t(x[3],x[4])}</p></div></div>`).join('');
+ document.getElementById('medlist').innerHTML=meds.length?meds.map(m=>`<p>💊 ${escapeHTML(m.name)} — ${m.time}</p>`).join(''):t('لا توجد أدوية مسجلة بعد.','No medicines added yet.');
+}
+function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function saveCheck(){let el=document.getElementById('checkmsg');el.textContent=Object.keys(answers).length===6?t('تم تسجيل الإجابات في هذه الجلسة.','Answers recorded for this session.'):t('يرجى الإجابة عن جميع الأسئلة الستة.','Please answer all six questions.')}
+function completeExercise(i){if(!completed.includes(i))completed.push(i);persistData();renderAll()}
+function riskResult(){let el=document.getElementById('riskmsg');if(Object.keys(riskAnswers).length<4){el.textContent=t('يرجى الإجابة عن جميع الأسئلة.','Please answer all questions.');return}let yes=Object.values(riskAnswers).filter(Boolean).length;el.textContent=yes?t('توجد إجابة إيجابية واحدة أو أكثر. يُنصح بمناقشة عوامل الخطر مع مقدم الرعاية الصحية.','One or more positive answers. Discuss fall-risk factors with a healthcare professional.'):t('لم تُسجّل إجابات إيجابية في هذا الفحص الأولي، لكن ذلك لا يستبعد خطر السقوط.','No positive answers were recorded, but this does not rule out fall risk.')}
+function auditResult(){let el=document.getElementById('auditmsg');if(Object.keys(auditAnswers).length<4){el.textContent=t('يرجى الإجابة عن جميع البنود.','Please answer all items.');return}el.textContent=t('تم تسجيل الفحص. راجع البنود التي أجبت عنها بنعم لمعالجة المخاطر المحتملة.','Audit recorded. Review items answered Yes and address potential hazards.')}
+function addMed(){let name=document.getElementById('medname').value.trim(),time=document.getElementById('medtime').value;if(!name||!time){document.getElementById('medmsg').textContent=t('أدخل اسم الدواء والموعد.','Enter a medicine name and time.');return}meds.push({name,time});persistData();document.getElementById('medname').value='';renderAll();document.getElementById('medmsg').textContent=t('تمت إضافة الدواء إلى القائمة.','Medicine added to the list.')}
+function renderReport(){let yes=Object.values(answers).filter(Boolean).length,no=Object.values(answers).filter(v=>!v).length;document.getElementById('reportdata').innerHTML=`<b>${t('ملخص القائمة اليومية','Daily checklist summary')}</b><p>${t('إجابات نعم','Yes answers')}: ${yes}</p><p>${t('إجابات لا','No answers')}: ${no}</p><p>${t('التمارين المكتملة','Completed exercises')}: ${completed.length}/3</p><p>${t('الأدوية المسجلة','Medicines recorded')}: ${meds.length}</p><p class="muted">${t('هذه بيانات توعوية أولية وليست تقييماً طبياً أو تشخيصاً.','These are preliminary educational data, not a medical assessment or diagnosis.')}</p>`}
+renderAll();
+if ('serviceWorker' in navigator) {
+ window.addEventListener('load', () => {
+  navigator.serviceWorker.register('./sw.js')
+   .then(reg => console.log('SafeStep-JO PWA Registered!', reg))
+   .catch(err => console.error('Service Worker Error:', err));
+ });
+}
+</script>
+</body>
+</html>
